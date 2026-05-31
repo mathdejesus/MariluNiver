@@ -1,0 +1,17 @@
+# Environment variables (nunca versionar)
+.env
+.env.*
+!.env.example
+
+# Keys and secrets
+*.key
+*.pem
+secrets/
+.ssh/
+
+# Dependencies
+node_modules/
+
+# OS metadata
+.DS_Store
+Thumbs.db
