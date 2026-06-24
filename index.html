@@ -73,8 +73,22 @@
             height: 100%;
         }
         
+        .flip-card-front {
+            z-index: 2;
+            outline: none;
+        }
+        
         .flip-card-back {
             transform: rotateY(180deg);
+            z-index: 1;
+        }
+        
+        .flip-card.flipped .flip-card-front {
+            z-index: 1;
+        }
+        
+        .flip-card.flipped .flip-card-back {
+            z-index: 2;
         }
         
         .text-gradient {
@@ -198,12 +212,12 @@
 <body class="min-h-screen bg-gradient-to-br from-green-50 via-purple-50 to-pink-50 overflow-hidden">
     <!-- Elementos decorativos flutuantes -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <i class="fas fa-music absolute text-green-300 text-xl opacity-70 animate-float" style="top: 10%; left: 5%;"></i>
-        <i class="fas fa-star absolute text-purple-300 text-lg opacity-70 animate-float delay-1" style="top: 20%; left: 90%;"></i>
-        <i class="fas fa-heart absolute text-pink-300 text-lg opacity-70 animate-float delay-2" style="top: 70%; left: 10%;"></i>
-        <i class="fas fa-music absolute text-green-300 text-lg opacity-70 animate-float delay-3" style="top: 80%; left: 85%;"></i>
-        <i class="fas fa-gift absolute text-yellow-400 text-lg opacity-70 animate-float delay-4" style="top: 40%; left: 15%;"></i>
-        <i class="fas fa-star absolute text-purple-300 text-lg opacity-70 animate-float delay-5" style="top: 60%; left: 75%;"></i>
+        <i aria-hidden="true" class="fas fa-music absolute text-green-300 text-xl opacity-70 animate-float" style="top: 10%; left: 5%;"></i>
+        <i aria-hidden="true" class="fas fa-star absolute text-purple-300 text-lg opacity-70 animate-float delay-1" style="top: 20%; left: 90%;"></i>
+        <i aria-hidden="true" class="fas fa-heart absolute text-pink-300 text-lg opacity-70 animate-float delay-2" style="top: 70%; left: 10%;"></i>
+        <i aria-hidden="true" class="fas fa-music absolute text-green-300 text-lg opacity-70 animate-float delay-3" style="top: 80%; left: 85%;"></i>
+        <i aria-hidden="true" class="fas fa-gift absolute text-yellow-400 text-lg opacity-70 animate-float delay-4" style="top: 40%; left: 15%;"></i>
+        <i aria-hidden="true" class="fas fa-star absolute text-purple-300 text-lg opacity-70 animate-float delay-5" style="top: 60%; left: 75%;"></i>
     </div>
     
     <!-- Bolhas decorativas -->
@@ -219,7 +233,7 @@
             <div class="flip-card w-full h-full" id="birthdayCard">
                 <div class="flip-card-inner w-full h-full">
                     <!-- Lado da frente (cartão fechado) -->
-                    <div class="flip-card-front cursor-pointer">
+                    <div class="flip-card-front cursor-pointer" tabindex="0" role="button" aria-label="Abrir cartão de aniversário">
                         <div class="bg-gradient-to-br from-green-100 via-white to-purple-100 rounded-2xl shadow-2xl p-4 md:p-8 lg:p-12 border-4 border-yellow-300 relative overflow-hidden card-transition hover:scale-105 w-full h-full flex items-center justify-center">
                             <!-- Elementos decorativos de canto -->
                             <div class="absolute top-0 left-0 w-20 md:w-32 h-20 md:h-32 bg-gradient-to-br from-green-200/40 to-transparent rounded-br-full"></div>
@@ -232,7 +246,7 @@
                             <!-- Conteúdo -->
                             <div class="relative z-10 text-center space-y-4 md:space-y-8 px-2">
                                 <div class="animate-bounce-slow">
-                                    <i class="fas fa-gift text-4xl md:text-5xl lg:text-6xl text-green-500"></i>
+                                    <i aria-hidden="true" class="fas fa-gift text-4xl md:text-5xl lg:text-6xl text-green-500"></i>
                                 </div>
                                 
                                 <div>
@@ -245,9 +259,9 @@
                                 </div>
 
                                 <div class="flex items-center justify-center gap-1 md:gap-2 text-green-600 animate-pulse">
-                                    <i class="fas fa-heart text-lg md:text-xl"></i>
+                                    <i aria-hidden="true" class="fas fa-heart text-lg md:text-xl"></i>
                                     <span class="text-sm md:text-lg font-medium">Clique para abrir sua surpresa</span>
-                                    <i class="fas fa-heart text-lg md:text-xl"></i>
+                                    <i aria-hidden="true" class="fas fa-heart text-lg md:text-xl"></i>
                                 </div>
                             </div>
                         </div>
@@ -261,9 +275,9 @@
                                 <div class="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
                                 <div class="relative z-10 w-full">
                                     <div class="flex justify-center items-center gap-2 md:gap-4 mb-2 md:mb-3">
-                                        <i class="fas fa-music text-white text-lg md:text-2xl drop-shadow-lg"></i>
-                                        <i class="fas fa-sparkles text-white text-xl md:text-3xl drop-shadow-lg sparkle"></i>
-                                        <i class="fas fa-music text-white text-lg md:text-2xl drop-shadow-lg"></i>
+                                        <i aria-hidden="true" class="fas fa-music text-white text-lg md:text-2xl drop-shadow-lg"></i>
+                                        <i aria-hidden="true" class="fas fa-sparkles text-white text-xl md:text-3xl drop-shadow-lg sparkle"></i>
+                                        <i aria-hidden="true" class="fas fa-music text-white text-lg md:text-2xl drop-shadow-lg"></i>
                                     </div>
                                     <h2 class="text-xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
                                         Feliz Aniversário, Marilu!
@@ -297,7 +311,6 @@
                                         <div class="video-container">
                                             <video controls class="w-full rounded shadow-lg" poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgdmlld0JveD0iMCAwIDgwMCA0NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiBmaWxsPSIjRjNDMURGIi8+CjxwYXRoIGQ9Ik0zMjAgMjI1TDUwMCAyMjVNNDEwIDE3NVYyNzUiIHN0cm9rZT0iIzkzMzNFQSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+">
                                                 <source src="parabens.mp4" type="video/mp4">
-                                                <source src="parabens.webm" type="video/webm">
                                                 Seu navegador não suporta a reprodução de vídeo.
                                             </video>
                                         </div>
@@ -316,13 +329,13 @@
                                 <!-- Elementos decorativos - corações musicais + Áudio -->
                                 <div class="flex flex-col items-center gap-3 md:gap-4 pt-4 md:pt-6">
                                     <div class="flex justify-center gap-2 md:gap-4">
-                                        <i class="fas fa-music text-green-400 text-lg md:text-xl animate-bounce"></i>
-                                        <i class="fas fa-heart text-purple-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.2s;"></i>
-                                        <i class="fas fa-star text-pink-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.4s;"></i>
-                                        <i class="fas fa-music text-green-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.6s;"></i>
-                                        <i class="fas fa-heart text-purple-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.8s;"></i>
-                                        <i class="fas fa-star text-pink-400 text-lg md:text-xl animate-bounce" style="animation-delay: 1s;"></i>
-                                        <i class="fas fa-music text-green-400 text-lg md:text-xl animate-bounce" style="animation-delay: 1.2s;"></i>
+                                        <i aria-hidden="true" class="fas fa-music text-green-400 text-lg md:text-xl animate-bounce"></i>
+                                        <i aria-hidden="true" class="fas fa-heart text-purple-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.2s;"></i>
+                                        <i aria-hidden="true" class="fas fa-star text-pink-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.4s;"></i>
+                                        <i aria-hidden="true" class="fas fa-music text-green-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.6s;"></i>
+                                        <i aria-hidden="true" class="fas fa-heart text-purple-400 text-lg md:text-xl animate-bounce" style="animation-delay: 0.8s;"></i>
+                                        <i aria-hidden="true" class="fas fa-star text-pink-400 text-lg md:text-xl animate-bounce" style="animation-delay: 1s;"></i>
+                                        <i aria-hidden="true" class="fas fa-music text-green-400 text-lg md:text-xl animate-bounce" style="animation-delay: 1.2s;"></i>
                                     </div>
 
                                     <!-- Player de Áudio Local -->
@@ -330,8 +343,7 @@
                                         <div class="bg-green-50 rounded-lg p-3 md:p-4 text-center">
                                             <p class="text-green-700 text-sm md:text-base mb-1 md:mb-2">🎵 "Minha querida Malu, ao chegar aos 19, lembre-se: você já passou por tantas estradas e tem tanto por viver. Estou torcendo por você em cada curva!" 🎵</p>
                                             <div class="custom-audio-player">
-                                                <audio controls autoplay>
-                                                    <source src="musica-parabens.mp4" type="audio/mp4">
+                                                <audio controls preload="auto">
                                                     <source src="22ts.mp3" type="audio/mpeg">
                                                     Seu navegador não suporta o elemento de áudio.
                                                 </audio>
@@ -344,7 +356,7 @@
                                 <!-- Botão fechar -->
                                 <div class="text-center pt-4 md:pt-6 pb-2">
                                     <button id="closeButton" class="bg-gradient-to-r from-green-500 to-purple-500 hover:from-green-600 hover:to-purple-600 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                                        <i class="fas fa-heart mr-2"></i>
+                                        <i aria-hidden="true" class="fas fa-heart mr-2"></i>
                                         Fechar Cartão
                                     </button>
                                 </div>
@@ -371,7 +383,7 @@
                 if (audioPlayer) {
                     audioPlayer.volume = 0.5;
                     audioPlayer.play().catch(e => {
-                        console.log("Reprodução automática do áudio não permitida:", e);
+                        console.log("Falha ao reproduzir áudio:", e);
                     });
                 }
                 
@@ -379,6 +391,14 @@
                 setTimeout(() => {
                     window.dispatchEvent(new Event('resize'));
                 }, 600);
+            });
+
+            // Abrir com teclado (Enter/Space)
+            frontCard.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    frontCard.click();
+                }
             });
 
             // Fechar o cartão
@@ -393,10 +413,9 @@
 
             // Ajustar o cartão quando a janela for redimensionada
             window.addEventListener('resize', function() {
-                // Forçar redesenho dos elementos
                 if (card.classList.contains('flipped')) {
                     card.style.display = 'none';
-                    card.offsetHeight; // Trigger reflow
+                    card.offsetHeight;
                     card.style.display = 'block';
                 }
             });

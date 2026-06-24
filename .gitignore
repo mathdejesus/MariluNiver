@@ -1,7 +1,6 @@
 # Environment variables (nunca versionar)
 .env
 .env.*
-!.env.example
 
 # Keys and secrets
 *.key
